@@ -1,16 +1,30 @@
 const pw2=document.getElementById('pw')
 const copy=document.getElementById('copy')
+const hd=document.getElementById('hd')
 const length=document.getElementById('len')
 const up=document.getElementById('up')
 const low=document.getElementById('low')
 const num=document.getElementById('nums')
 const symb =document.getElementById('symb')
 const generator=document.getElementById('generate')
-
+ 
 const upper="ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 const numbs="1234567890"
 const lower="abcdefghijklmnopqrstuvwxyz"
 const sym=["!","@",'#',"$","&","%",'~',"-","+","/"]
+console.log(pw2.innerHTML)
+// if(pw2.innerHTML)
+// {
+//     // hd.appendChild(copy)
+// }
+// if(length.value=="")
+// {
+    
+//     copy.style.opacity=0
+// }
+// else{
+//     copy.style.opacity=1
+// }
 
 
 function password(leng,a,b,c,d){
@@ -51,6 +65,13 @@ return ar
 generator.addEventListener('click',()=>{
 
  
+    console.log(typeof(length.value))
+    console.log(length.value)
+    if(length.value=="")
+    {
+        pw2.innerHTML=""   
+    }
+    else{
     let s=parseInt(length.value)
     console.log(typeof(s))
 console.log(typeof(up.checked))
@@ -59,7 +80,22 @@ console.log(typeof(up.checked))
     console.log(pw)
     pw2.innerHTML=pw
    
+    }
 
 
+})
+
+
+copy.addEventListener('click',()=>{
+const textarea=document.createElement('textarea')
+
+const pwd=pw2.innerHTML
+if(!pwd){return;}
+
+textarea.value=pwd;
+document.body.appendChild(textarea)
+textarea.select()
+document.execCommand('copy');
+textarea.remove()
 
 })
